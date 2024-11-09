@@ -1,8 +1,15 @@
 import {View, Text, ImageBackground} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import AppStyle from '../theme/styles';
+import {useNavigation} from '@react-navigation/native';
 
 const SplashScreen = () => {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    setTimeout(() => navigation.navigate('Login'), 2500);
+  }, []);
+
   return (
     <View style={AppStyle.StyleSplash.container}>
       <ImageBackground

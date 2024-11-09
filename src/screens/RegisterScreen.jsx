@@ -17,9 +17,12 @@ import React, {useState} from 'react';
 import AppStyle from '../theme/styles';
 import GradientButton from '../components/Button';
 import HorizontalLine from '../components/Line';
+import {useNavigation} from '@react-navigation/native';
 
 const RegisterScreen = () => {
+  const navigation = useNavigation();
   const [isToggleChecked, setToggleChecked] = useState(false);
+  const toggleCheck = () => setToggleChecked(preved => !preved);
 
   return (
     <KeyboardAvoidingView
@@ -27,7 +30,6 @@ const RegisterScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <SafeAreaView>
-          <StatusBar hidden />
           {/* Header */}
           <ScrollView showsVerticalScrollIndicator={false}>
             {/* <ImageBackground
@@ -74,11 +76,7 @@ const RegisterScreen = () => {
                   />
                   <Pressable
                     style={AppStyle.StyleRegister.togglePassword}
-                    onPress={() => {
-                      !isToggleChecked
-                        ? setToggleChecked(true)
-                        : setToggleChecked(false);
-                    }}>
+                    onPress={toggleCheck}>
                     {!isToggleChecked ? (
                       <Image
                         source={require('../assets/icons/eye-invisible-filled.png')}
@@ -134,7 +132,7 @@ const RegisterScreen = () => {
                 <Text style={AppStyle.StyleRegister.textCommon}>
                   Bạn đã có tài khoản?
                 </Text>
-                <Pressable>
+                <Pressable onPress={() => navigation.navigate('Login')}>
                   <Text style={AppStyle.StyleRegister.textCreateAccount}>
                     Đăng nhập
                   </Text>

@@ -17,10 +17,15 @@ import React, {useState} from 'react';
 import AppStyle from '../theme/styles';
 import GradientButton from '../components/Button';
 import HorizontalLine from '../components/Line';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
   const [isToggleChecked, setToggleChecked] = useState(false);
   const [isChecked, setChecked] = useState(false);
+
+  const toggleCheck = () => setToggleChecked(preved => !preved);
+  const rememberCheck = () => setChecked(preved => !preved);
 
   return (
     <KeyboardAvoidingView
@@ -28,7 +33,6 @@ const LoginScreen = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <SafeAreaView>
-          <StatusBar hidden />
           {/* Header */}
           <ScrollView showsVerticalScrollIndicator={false}>
             <ImageBackground
@@ -63,11 +67,7 @@ const LoginScreen = () => {
                   />
                   <Pressable
                     style={AppStyle.StyleLogin.togglePassword}
-                    onPress={() => {
-                      !isToggleChecked
-                        ? setToggleChecked(true)
-                        : setToggleChecked(false);
-                    }}>
+                    onPress={toggleCheck}>
                     {!isToggleChecked ? (
                       <Image
                         source={require('../assets/icons/eye-invisible-filled.png')}
@@ -83,10 +83,7 @@ const LoginScreen = () => {
               {/* Remember account and Forgot Password */}
               <View style={AppStyle.StyleLogin.wrapRememberAndForgotPassword}>
                 <View style={AppStyle.StyleLogin.wrapCheckbox}>
-                  <Pressable
-                    onPress={() => {
-                      !isChecked ? setChecked(true) : setChecked(false);
-                    }}>
+                  <Pressable onPress={rememberCheck}>
                     {!isChecked ? (
                       <Image
                         source={require('../assets/icons/checkbox-circle-line.png')}
@@ -131,7 +128,7 @@ const LoginScreen = () => {
                 <Text style={AppStyle.StyleLogin.textCommon}>
                   Bạn không có tài khoản?
                 </Text>
-                <Pressable>
+                <Pressable onPress={() => navigation.navigate('Register')}>
                   <Text style={AppStyle.StyleLogin.textCreateAccount}>
                     Tạo tài khoản
                   </Text>
