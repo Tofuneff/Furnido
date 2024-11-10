@@ -5,7 +5,7 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 
 const RootStack = createNativeStackNavigator({
-  initialRouteName: 'Splash',
+  initialRouteName: 'BottomTab',
   screenOptions: {
     headerShown: false,
   },

@@ -8,49 +8,41 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
+import {images} from '../../api/data';
 
 // Lấy ra kích thước của màn hình thông qua Dimensions.get('window')
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 const BannerSlider = () => {
-  const images = [
-    {
-      id: 1,
-      image:
-        'https://i.pinimg.com/564x/f9/0c/23/f90c23f1af3af74ca36a2a4536944544.jpg',
-    },
-    {
-      id: 2,
-      image:
-        'https://i.pinimg.com/564x/17/1b/55/171b55e04758e1fb29ba0f75b4b28072.jpg',
-    },
-    {
-      id: 3,
-      image:
-        'https://i.pinimg.com/564x/1e/38/dc/1e38dcccee1347c91506ea23a8d7a627.jpg',
-    },
-  ];
-
   const [activeIndex, setActiveIndex] = useState(0);
-  const flatListRef = useRef();
+  const flatListRef = useRef(null);
+
+  const setFlatListRef = useCallback(ref => {
+    if (ref) {
+      flatListRef.current = ref;
+    }
+  }, []);
 
   useEffect(() => {
     const lastIndex = images.length - 1;
     // if activeIndex === lastIndex --> trở về index 0
     // else activeIndex + 1
     let interval = setInterval(() => {
-      if (activeIndex === lastIndex) {
-        flatListRef.current.scrollToIndex({
-          index: 0,
-          animated: true,
-        });
-      } else {
-        flatListRef.current.scrollToIndex({
-          index: activeIndex + 1,
-          animated: true,
-        });
+      if (flatListRef.current) {
+        // Kiểm tra flatListRef.current tồn tại
+        if (activeIndex === lastIndex) {
+          flatListRef.current.scrollToIndex({
+            index: 0,
+            animated: true,
+          });
+        } else {
+          flatListRef.current.scrollToIndex({
+            index: activeIndex + 1,
+            animated: true,
+          });
+        }
       }
     }, 3000);
 
@@ -110,10 +102,16 @@ const BannerSlider = () => {
           renderItem={renderItem}
           keyExtractor={item => item.id}
           onScroll={({nativeEvent}) => onChange(nativeEvent)}
+          onScrollToIndexFailed={error => {
+            flatListRef.current?.scrollToOffset({
+              offset: error.averageItemLength * error.index,
+              animated: true,
+            });
+          }}
           showsHorizontalScrollIndicator={false}
           pagingEnabled
           horizontal
-          ref={flatListRef}
+          ref={setFlatListRef}
           getItemLayout={getItemLayout}
           // Chỉ load các item trong viewport và một màn hình xung quanh nó
           windowSize={1}

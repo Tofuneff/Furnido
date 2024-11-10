@@ -7,7 +7,6 @@ import {
   Keyboard,
   Image,
   Pressable,
-  StatusBar,
   TouchableWithoutFeedback,
   Platform,
   SafeAreaView,
@@ -106,7 +105,10 @@ const LoginScreen = () => {
               </View>
               {/* Button */}
               <View>
-                <GradientButton title="Đăng nhập" />
+                <GradientButton
+                  title="Đăng nhập"
+                  onPress={() => navigation.navigate('BottomTab')}
+                />
               </View>
               {/* Or */}
               <View style={AppStyle.StyleLogin.wrapOr}>

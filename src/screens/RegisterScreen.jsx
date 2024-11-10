@@ -7,7 +7,6 @@ import {
   Keyboard,
   Image,
   Pressable,
-  StatusBar,
   TouchableWithoutFeedback,
   Platform,
   SafeAreaView,
