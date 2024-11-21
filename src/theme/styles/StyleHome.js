@@ -5,19 +5,35 @@ const StyleHome = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
+  wrapBanner: {
+    marginBottom: 10,
+  },
   wrapHeader: {
+    marginHorizontal: 20,
+    marginTop: 50,
+    marginBottom: 15,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
+  },
+  buttons: {
+    flexDirection: 'row',
   },
   cart: {
-    marginTop: 50,
-    marginEnd: 25,
-    width: 42,
-    height: 42,
-    borderRadius: 30,
+    marginEnd: 5,
+    width: 40,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+  },
+  favourite: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    width: 35,
+    height: 35,
   },
 });
 

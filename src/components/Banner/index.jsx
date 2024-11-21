@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   },
   wrap: {
     width: WIDTH,
-    height: HEIGHT * 0.25,
+    height: 230,
   },
   wrapDot: {
     position: 'absolute',

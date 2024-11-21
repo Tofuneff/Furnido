@@ -51,3 +51,11 @@ export const images = [
       'https://i.pinimg.com/564x/1e/38/dc/1e38dcccee1347c91506ea23a8d7a627.jpg',
   },
 ];
+
+export const categories = [
+  {id: '1', name: 'Chairs', apiEndpoint: 'chairs'},
+  {id: '2', name: 'Sofas', apiEndpoint: 'sofas'},
+  {id: '3', name: 'Tables', apiEndpoint: 'tables'},
+  {id: '4', name: 'Kitchen', apiEndpoint: 'kitchen'},
+  {id: '5', name: 'Beds', apiEndpoint: 'beds'},
+];

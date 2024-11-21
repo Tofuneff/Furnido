@@ -31,11 +31,12 @@ const RegisterScreen = () => {
         <SafeAreaView>
           {/* Header */}
           <ScrollView showsVerticalScrollIndicator={false}>
-            {/* <ImageBackground
-              style={[AppStyle.StyleRegister.backgroundImage]}
-              resizeMode="cover"
-              source={require('../assets/images/bgImage1.png')}
-            /> */}
+            <View style={AppStyle.StyleRegister.wrapLogo}>
+              <Image
+                style={AppStyle.StyleRegister.logo}
+                source={require('../assets/images/logo.jpg')}
+              />
+            </View>
             {/* Content */}
             <View style={AppStyle.StyleRegister.mainWrapper}>
               <View style={AppStyle.StyleRegister.wrapTitle}>

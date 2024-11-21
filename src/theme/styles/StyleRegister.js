@@ -4,10 +4,16 @@ import colors from '../../constants/colors';
 const StyleRegister = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
-  backgroundImage: {
-    width: 412,
-    height: 360,
+  logo: {
+    width: 80,
+    height: 80,
+  },
+  wrapLogo: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 100,
   },
   mainWrapper: {
     alignItems: 'center',
@@ -57,7 +63,7 @@ const StyleRegister = StyleSheet.create({
   textTermsAndConditions: {
     fontFamily: 'Poppins-Regular',
     textDecorationLine: 'underline',
-    color: 'rgba(0, 146, 69, 1)',
+    color: '#402700',
   },
   wrapOr: {
     width: 350,
@@ -84,7 +90,7 @@ const StyleRegister = StyleSheet.create({
   },
   textCreateAccount: {
     fontFamily: 'Poppins-Regular',
-    color: 'rgba(0, 146, 69, 1)',
+    color: '#402700',
   },
 });
 

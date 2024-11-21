@@ -3,7 +3,7 @@ import HomeScreen from '../screens/tabs/HomeScreen';
 import SearchScreen from '../screens/tabs/SearchScreen';
 import NotificationScreen from '../screens/tabs/NotificationScreen';
 import ProfileScreen from '../screens/tabs/ProfileScreen';
-import {Image} from 'react-native';
+import {Dimensions, Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +33,6 @@ const BottomTabs = () => {
       initialRouteName="Home"
       screenOptions={({route}) => ({
         headerShown: false,
-        tabBarShowLabel: false,
         tabBarIcon: ({focused}) => {
           // Chọn icon dựa trên trạng thái focused
           const iconSource = focused
@@ -43,10 +42,17 @@ const BottomTabs = () => {
         },
         // Điều chỉnh chiều cao của bottom tab
         tabBarStyle: {
-          height: 60, // Đặt chiều cao theo ý muốn
+          height: 75, // Đặt chiều cao theo ý muốn
           paddingTop: 6, // Căn chỉnh icon bên trong tab bar
           backgroundColor: '#FFFFFF',
         },
+        tabBarActiveTintColor: '#000000',
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontFamily: 'Poppins-Medium',
+          paddingTop: 4,
+        },
+        tabBarPosition: Dimensions.width > 600 ? 'left' : 'bottom',
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Search" component={SearchScreen} />

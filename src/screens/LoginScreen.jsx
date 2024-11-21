@@ -34,11 +34,12 @@ const LoginScreen = () => {
         <SafeAreaView>
           {/* Header */}
           <ScrollView showsVerticalScrollIndicator={false}>
-            <ImageBackground
-              style={[AppStyle.StyleLogin.backgroundImage]}
-              resizeMode="cover"
-              source={require('../assets/images/bgImage.png')}
-            />
+            <View style={AppStyle.StyleLogin.wrapLogo}>
+              <Image
+                style={AppStyle.StyleLogin.logo}
+                source={require('../assets/images/logo.jpg')}
+              />
+            </View>
             {/* Content */}
             <View style={AppStyle.StyleLogin.mainWrapper}>
               <View style={AppStyle.StyleLogin.wrapTitle}>
@@ -89,6 +90,7 @@ const LoginScreen = () => {
                       />
                     ) : (
                       <Image
+                        tintColor={'#402700'}
                         source={require('../assets/icons/checked-circle-line.png')}
                       />
                     )}

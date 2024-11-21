@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   more: {
     fontSize: 16,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
     textDecorationLine: 'underline',
   },
   btnMore: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   productImage: {
     width: '100%',
-    height: 150,
+    height: 160,
     borderRadius: 8,
     marginBottom: 10,
   },
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
     textAlign: 'center',
   },
-  productDescription: {
+  productCategory: {
     fontSize: 12,
     color: '#666',
     fontFamily: 'Poppins-Regular',

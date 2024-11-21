@@ -12,10 +12,6 @@ const SplashScreen = () => {
 
   return (
     <View style={AppStyle.StyleSplash.container}>
-      <ImageBackground
-        style={AppStyle.StyleSplash.backgroundImage}
-        source={require('../assets/images/bgImage.png')}
-      />
       <View>
         <Text style={AppStyle.StyleSplash.text}>Sinh viên: Đỗ Minh Hiếu</Text>
         <Text style={AppStyle.StyleSplash.text}>Mã sinh viên: PH47182</Text>

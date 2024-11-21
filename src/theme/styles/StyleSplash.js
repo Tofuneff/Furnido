@@ -4,12 +4,8 @@ import colors from '../../constants/colors';
 const StyleSplash = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 50,
-  },
-  backgroundImage: {
-    width: 412,
-    height: 360,
-    objectFit: 'cover',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontFamily: 'Poppins-Medium',

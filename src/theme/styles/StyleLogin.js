@@ -4,10 +4,17 @@ import colors from '../../constants/colors';
 const StyleLogin = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
-  backgroundImage: {
-    width: 412,
-    height: 360,
+  logo: {
+    width: 120,
+    height: 120,
+  },
+  wrapLogo: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 100,
+    marginBottom: 30,
   },
   mainWrapper: {
     alignItems: 'center',
@@ -64,7 +71,7 @@ const StyleLogin = StyleSheet.create({
   },
   textForgotPassword: {
     fontFamily: 'Poppins-Regular',
-    color: 'rgba(0, 146, 69, 1)',
+    color: '#402700',
   },
   wrapOr: {
     width: 350,
@@ -90,7 +97,7 @@ const StyleLogin = StyleSheet.create({
   },
   textCreateAccount: {
     fontFamily: 'Poppins-Regular',
-    color: 'rgba(0, 146, 69, 1)',
+    color: '#402700',
   },
 });
 

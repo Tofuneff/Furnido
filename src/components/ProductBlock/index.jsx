@@ -1,13 +1,12 @@
 import React from 'react';
 import {View, Text, Image, FlatList, Pressable} from 'react-native';
 import styles from './style';
-
 const ProductBlock = ({title, products}) => {
   const renderProductItem = ({item}) => (
     <View style={styles.productContainer}>
-      <Image source={item.image} style={styles.productImage} />
+      <Image source={{uri: item.image}} style={styles.productImage} />
       <Text style={styles.productTitle}>{item.title}</Text>
-      <Text style={styles.productDescription}>{item.description}</Text>
+      <Text style={styles.productCategory}>{item.category}</Text>
       <Text style={styles.productPrice}>${item.price}</Text>
       <View style={styles.colorContainer}>
         {item.colors.map((color, index) => (
@@ -16,7 +15,6 @@ const ProductBlock = ({title, products}) => {
             style={[styles.colorDot, {backgroundColor: color}]}
           />
         ))}
-        {/* <View style={[styles.colorDot, {backgroundColor: item.colors}]} /> */}
       </View>
     </View>
   );

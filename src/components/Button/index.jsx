@@ -5,7 +5,7 @@ import styles from './style';
 const GradientButton = ({title, onPress}) => {
   return (
     <LinearGradient
-      colors={['rgba(0, 117, 55, 1)', 'rgba(76, 175, 80, 1)']} // Màu gradient
+      colors={['#402700', '#402700']} // Màu gradient
       style={styles.button}
       start={{x: 0, y: 0}} // Bắt đầu từ góc trái trên
       end={{x: 1, y: 0}} // Kết thúc ở góc phải trên
