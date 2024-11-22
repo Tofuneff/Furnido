@@ -4,7 +4,10 @@ import React from 'react';
 const ProfileScreen = () => {
   return (
     <View>
-      <Text>ProfileScreen</Text>
+      {/* Header */}
+      <View>
+        <Text>PROFILE</Text>
+      </View>
     </View>
   );
 };
