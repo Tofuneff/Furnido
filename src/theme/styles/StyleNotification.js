@@ -6,7 +6,7 @@ const StyleNotification = StyleSheet.create({
   },
   textLabel: {
     fontSize: 18,
-    marginStart: 105,
+    marginStart: 130,
     fontFamily: 'Poppins-Medium',
   },
   textNotification: {

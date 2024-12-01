@@ -1,13 +1,17 @@
 import React from 'react';
 import {FlatList, Pressable, Text, StyleSheet} from 'react-native';
 
-const CategorySelector = ({categories, selectedCategory, onCategoryChange}) => {
+const CategorySelector = ({
+  categories,
+  selectedCategoryId,
+  onCategoryChange,
+}) => {
   const renderItem = ({item}) => {
-    const isSelected = item.apiEndpoint === selectedCategory;
+    const isSelected = item.id === selectedCategoryId;
     return (
       <Pressable
         style={[styles.categoryItem, isSelected && styles.selectedCategory]}
-        onPress={() => onCategoryChange(item.apiEndpoint)}>
+        onPress={() => onCategoryChange(item.id)}>
         <Text style={[styles.categoryText, isSelected && styles.selectedText]}>
           {item.name}
         </Text>

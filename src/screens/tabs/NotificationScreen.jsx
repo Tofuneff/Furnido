@@ -10,9 +10,6 @@ const NotificationScreen = () => {
   return (
     <View style={AppStyle.StyleNotification.container}>
       <Heading>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Image source={require('../../assets/icons/icon-back.png')} />
-        </Pressable>
         <Text style={AppStyle.StyleNotification.textLabel}>Notification</Text>
       </Heading>
       <Text style={AppStyle.StyleNotification.textNotification}>

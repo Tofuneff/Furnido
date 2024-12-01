@@ -3,17 +3,21 @@ import SplashScreen from '../screens/SplashScreen';
 import BottomTabs from './BottomTabNavigatior';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
+import ProductDetail from '../screens/ProductDetail';
+import CartScreen from '../screens/CartScreen';
 
 const RootStack = createNativeStackNavigator({
-  initialRouteName: 'Splash',
+  initialRouteName: 'login',
   screenOptions: {
     headerShown: false,
   },
   screens: {
-    Splash: SplashScreen,
-    Login: LoginScreen,
-    Register: RegisterScreen,
-    BottomTab: BottomTabs,
+    splash: SplashScreen,
+    login: LoginScreen,
+    register: RegisterScreen,
+    bottomTab: BottomTabs,
+    productDetail: ProductDetail,
+    cart: CartScreen,
   },
 });
 

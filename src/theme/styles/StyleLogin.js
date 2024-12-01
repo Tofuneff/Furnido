@@ -87,7 +87,8 @@ const StyleLogin = StyleSheet.create({
   wrapGoogleAndFacebook: {
     flexDirection: 'row',
     gap: 30,
-    marginVertical: 25,
+    marginTop: 25,
+    marginBottom: 50,
   },
   wrapFooter: {
     width: 400,
@@ -98,6 +99,7 @@ const StyleLogin = StyleSheet.create({
   textCreateAccount: {
     fontFamily: 'Poppins-Regular',
     color: '#402700',
+    height: 200,
   },
 });
 

@@ -10,10 +10,7 @@ const SearchScreen = () => {
   return (
     <View style={AppStyle.StyleSearch.container}>
       <Heading>
-        <Pressable onPress={() => navigation.goBack()}>
-          <Image source={require('../../assets/icons/icon-back.png')} />
-        </Pressable>
-        <Text style={AppStyle.StyleSearch.textLabel}>SEARCH</Text>
+        <Text style={AppStyle.StyleCommon.textLabel}>Search</Text>
       </Heading>
       <View>
         <TextInput

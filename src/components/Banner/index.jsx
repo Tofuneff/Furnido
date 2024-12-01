@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {images} from '../../api/data';
+import {slidesBanner} from '../../api';
 
 // Lấy ra kích thước của màn hình thông qua Dimensions.get('window')
 const WIDTH = Dimensions.get('window').width;
@@ -26,7 +26,7 @@ const BannerSlider = () => {
   }, []);
 
   useEffect(() => {
-    const lastIndex = images.length - 1;
+    const lastIndex = slidesBanner.length - 1;
     // if activeIndex === lastIndex --> trở về index 0
     // else activeIndex + 1
     let interval = setInterval(() => {
@@ -98,7 +98,7 @@ const BannerSlider = () => {
       <View style={styles.wrap}>
         <StatusBar hidden={true} />
         <FlatList
-          data={images}
+          data={slidesBanner}
           renderItem={renderItem}
           keyExtractor={item => item.id}
           onScroll={({nativeEvent}) => onChange(nativeEvent)}
@@ -120,7 +120,7 @@ const BannerSlider = () => {
           style={styles.wrap}
         />
         <View style={styles.wrapDot}>
-          {images.map((e, index) => (
+          {slidesBanner.map((e, index) => (
             <View
               key={e.id}
               style={

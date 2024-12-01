@@ -4,38 +4,25 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 15,
   },
-  wrapperHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
-  },
   title: {
     fontSize: 22,
     fontFamily: 'Poppins-Medium',
     marginBottom: 10,
   },
-  more: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Medium',
-    textDecorationLine: 'underline',
-  },
-  btnMore: {
-    alignSelf: 'center',
-  },
   productList: {
     paddingHorizontal: 5,
   },
   row: {
-    justifyContent: 'space-between', // Căn đều các sản phẩm theo hàng
+    justifyContent: 'space-between',
   },
   productContainer: {
-    flex: 1, // Chia đều không gian cho mỗi item
+    flex: 1,
     padding: 10,
     margin: 10,
     alignItems: 'center',
   },
   productImage: {
-    width: '100%',
+    width: 160,
     height: 160,
     borderRadius: 8,
     marginBottom: 10,
@@ -45,6 +32,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
     textAlign: 'center',
   },
+  productDesc: {
+    fontSize: 12,
+    fontFamily: 'Poppins-Regular',
+    textAlign: 'center',
+    color: 'gray',
+  },
   productCategory: {
     fontSize: 12,
     color: '#666',
@@ -53,7 +46,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   productPrice: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Poppins-Bold',
     color: 'tomato',
   },
@@ -67,6 +60,10 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     marginHorizontal: 3,
+  },
+  placeholder: {
+    backgroundColor: 'transparent',
+    flex: 1,
   },
 });
 

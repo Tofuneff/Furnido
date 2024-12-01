@@ -1,6 +1,19 @@
 import {View} from 'react-native';
-import styles from './style';
 
-const HorizontalLine = () => <View style={styles.line} />;
+const HorizontalLine = ({
+  width,
+  borderBottomWidth,
+  borderBottomColor,
+  marginVertical,
+}) => (
+  <View
+    style={{
+      width: width,
+      borderBottomWidth: borderBottomWidth,
+      borderBottomColor: borderBottomColor,
+      marginVertical: marginVertical,
+    }}
+  />
+);
 
 export default HorizontalLine;

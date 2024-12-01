@@ -34,7 +34,18 @@ export const products = [
   // thêm các sản phẩm khác vào đây
 ];
 
-export const images = [
+export const productSlides = [
+  {
+    id: 1,
+    image: require('../assets/images/products/product1.jpg'),
+  },
+  {
+    id: 2,
+    image: require('../assets/images/products/product2.jpg'),
+  },
+];
+
+export const slidesBanner = [
   {
     id: 1,
     image:

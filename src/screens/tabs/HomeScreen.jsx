@@ -10,43 +10,40 @@ import React, {useState, useEffect} from 'react';
 import BannerSlider from '../../components/Banner';
 import AppStyle from '../../theme/styles';
 import ProductBlock from '../../components/ProductBlock';
-import {categories} from '../../api/data';
 import CategorySelector from '../../components/CategorySelector';
+import {getProductsByCategory} from '../../api/productService';
+import {getCategories} from '../../api/categoryService';
+import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
-  const [selectedCategory, setSelectedCategory] = useState(
-    categories[0].apiEndpoint,
-  ); // Mặc định chọn category đầu tiên
-  const [products, setProducts] = useState([]); // Danh sách sản phẩm
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const navigation = useNavigation();
 
-  const fetchProducts = async categoryEndpoint => {
-    try {
-      // Gọi API từ json-server
-      const response = await fetch(`http://10.0.2.2:3000/${categoryEndpoint}`);
+  const fetchCategories = async () => {
+    const data = await getCategories();
+    setCategories(data);
 
-      // Kiểm tra status code
-      if (!response.ok) {
-        console.error('API Error:', response.status, response.statusText);
-        const text = await response.text(); // Lấy nội dung trả về
-        console.log('Response:', text);
-        return;
-      }
-
-      const data = await response.json(); // Lọc sản phẩm theo categoryId
-      setProducts(data);
-    } catch (error) {
-      console.error('Error fetching products:', error);
+    if (data.length > 0) {
+      setSelectedCategoryId(data[0].id);
     }
   };
 
-  // Lấy sản phẩm khi thay đổi danh mục
-  useEffect(() => {
-    fetchProducts(selectedCategory);
-  }, [selectedCategory]);
+  const fetchProductsByCategory = async categoryId => {
+    const data = await getProductsByCategory(categoryId);
+    setProducts(data);
+  };
 
-  if (!products || products.length === 0) {
-    return <Text>No products available</Text>;
-  }
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    if (selectedCategoryId !== null) {
+      fetchProductsByCategory(selectedCategoryId);
+    }
+  }, [selectedCategoryId]);
 
   return (
     <View style={AppStyle.StyleHome.container}>
@@ -59,7 +56,7 @@ const HomeScreen = () => {
         <View style={AppStyle.StyleHome.buttons}>
           <Pressable
             style={AppStyle.StyleHome.cart}
-            onPress={() => console.log('clicked')}>
+            onPress={() => navigation.navigate('cart')}>
             <Image source={require('../../assets/icons/shopping-cart.png')} />
           </Pressable>
           <Pressable
@@ -76,13 +73,24 @@ const HomeScreen = () => {
             {/* Banner */}
             <BannerSlider />
           </View>
-          {/* Thanh chọn danh mục */}
           <CategorySelector
             categories={categories}
-            selectedCategory={selectedCategory}
-            onCategoryChange={endpoint => setSelectedCategory(endpoint)}
+            selectedCategoryId={selectedCategoryId}
+            onCategoryChange={setSelectedCategoryId}
           />
-          <ProductBlock title="Popular Products" products={products} />
+          {!products.length ? (
+            <Text
+              style={{
+                textAlign: 'center',
+                paddingTop: '40%',
+                fontFamily: 'Poppins-Medium',
+              }}>
+              Product is coming soon...
+            </Text>
+          ) : (
+            <ProductBlock products={products} />
+          )}
+          {/* Thanh chọn danh mục */}
         </ScrollView>
       </SafeAreaView>
     </View>

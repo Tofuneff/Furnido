@@ -4,6 +4,9 @@ import StyleRegister from './StyleRegister';
 import StyleHome from './StyleHome';
 import StyleNotification from './StyleNotification';
 import StyleSearch from './StyleSearch';
+import StyleCommon from './StyleCommon';
+import StyleProfile from './StyleProfile';
+import StyleProductDetails from './StyleProductDetails';
 
 const AppStyle = {
   StyleSplash,
@@ -12,6 +15,9 @@ const AppStyle = {
   StyleHome,
   StyleNotification,
   StyleSearch,
+  StyleCommon,
+  StyleProfile,
+  StyleProductDetails,
 };
 
 export default AppStyle;

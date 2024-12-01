@@ -1,40 +1,59 @@
 import React from 'react';
 import {View, Text, Image, FlatList, Pressable} from 'react-native';
 import styles from './style';
-const ProductBlock = ({title, products}) => {
-  const renderProductItem = ({item}) => (
-    <View style={styles.productContainer}>
-      <Image source={{uri: item.image}} style={styles.productImage} />
-      <Text style={styles.productTitle}>{item.title}</Text>
-      <Text style={styles.productCategory}>{item.category}</Text>
-      <Text style={styles.productPrice}>${item.price}</Text>
-      <View style={styles.colorContainer}>
-        {item.colors.map((color, index) => (
-          <View
-            key={index}
-            style={[styles.colorDot, {backgroundColor: color}]}
+import {useNavigation} from '@react-navigation/native';
+
+const ProductBlock = ({products}) => {
+  const navigation = useNavigation();
+
+  const paddedProducts =
+    products.length % 2 === 0 ? products : [...products, {id: 'placeholder'}];
+
+  const goProductDetails = productId => {
+    navigation.navigate('productDetail', {productId});
+  };
+
+  const renderProductItem = ({item}) => {
+    // Nếu là placeholder thì render một View trống
+    if (item.id === 'placeholder') {
+      return <View style={[styles.productContainer, styles.placeholder]} />;
+    }
+
+    return (
+      <View style={styles.productContainer}>
+        <Pressable onPress={() => goProductDetails(item.id)}>
+          <Image
+            source={{uri: item.images.find(image => image.isMain)?.url}}
+            style={styles.productImage}
           />
-        ))}
+          <Text style={styles.productTitle}>{item.name}</Text>
+        </Pressable>
+        <Text style={styles.productPrice}>
+          {item.price ? item.price.toLocaleString('vi-VN') : '0'}
+        </Text>
+        <Text style={styles.productDesc} numberOfLines={2} ellipsizeMode="tail">
+          {item.description}
+        </Text>
+        <View style={styles.colorContainer}>
+          {item.colors.map(color => (
+            <View
+              key={color.id || color.hexCode}
+              style={[styles.colorDot, {backgroundColor: color.hexCode}]}
+            />
+          ))}
+        </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.wrapperHeader}>
-        <Text style={styles.title}>{title}</Text>
-        <Pressable
-          style={styles.btnMore}
-          onPress={() => console.log('clicked')}>
-          <Text style={styles.more}>View all</Text>
-        </Pressable>
-      </View>
       <FlatList
-        data={products}
+        data={paddedProducts}
         renderItem={renderProductItem}
         keyExtractor={item => item.id}
-        numColumns={2} // Thiết lập số cột
-        columnWrapperStyle={styles.row} // Áp dụng style cho từng hàng
+        numColumns={2}
+        columnWrapperStyle={styles.row}
         contentContainerStyle={styles.productList}
         scrollEnabled={false}
       />

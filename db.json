@@ -5,32 +5,94 @@
       "image": "https://i.pinimg.com/564x/07/97/bf/0797bfcf4a1c697a8e813fe6f69a3d82.jpg",
       "title": "Brook Chair",
       "category": "Chair",
-      "price": "29.99",
-      "colors": ["#002B4E", "#45B26D", "#666ECA"]
+      "price": 29.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#002B4E"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#45B26D"
+        },
+        {
+          "id": 3,
+          "name": "",
+          "hex": "#666ECA"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "2",
       "image": "https://i.pinimg.com/236x/fe/e4/bf/fee4bf7fcb1e3709a2f7d287fe207bae.jpg",
       "title": "Lounge Chair",
       "category": "Chair",
-      "price": "49.99",
-      "colors": ["#B6B1AC", "#FC157E"]
+      "price": 49.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#B6B1AC"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FC157E"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "3",
       "image": "https://i.pinimg.com/736x/f6/c8/dd/f6c8dd007d10f49276b79819a8428d0f.jpg",
       "title": "Sora Arm Chair",
       "category": "Chair",
-      "price": "29.99",
-      "colors": ["#002B4E", "#45B26D", "#666ECA"]
+      "price": 29.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#002B4E"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#45B26D"
+        },
+        {
+          "id": 3,
+          "name": "",
+          "hex": "#666ECA"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "4",
       "image": "https://i.pinimg.com/736x/6b/9a/56/6b9a56dbcb3d3c447146c0a0adb001ec.jpg",
       "title": "Lounge Armchair",
       "category": "Chair",
-      "price": "49.99",
-      "colors": ["#B6B1AC", "#FC157E"]
+      "price": 49.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#B6B1AC"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FC157E"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     }
   ],
   "sofas": [
@@ -39,32 +101,84 @@
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 5",
       "category": "category for Sofa 5",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "6",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 6",
       "category": "category for Sofa 6",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "7",
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 7",
       "category": "category for Sofa 7",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "8",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 8",
       "category": "category for Sofa 8",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     }
   ],
   "tables": [
@@ -73,32 +187,84 @@
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 9",
       "category": "category for Sofa 9",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "10",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 10",
       "category": "category for Sofa 10",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "11",
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 11",
       "category": "category for Sofa 11",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "12",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 12",
       "category": "category for Sofa 12",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     }
   ],
   "kitchen": [
@@ -107,32 +273,84 @@
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 13",
       "category": "category for Sofa 13",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "14",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 14",
       "category": "category for Sofa 14",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "15",
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 15",
       "category": "category for Sofa 15",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "16",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 16",
       "category": "category for Sofa 16",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     }
   ],
   "beds": [
@@ -141,32 +359,84 @@
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 17",
       "category": "category for Sofa 17",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "18",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 18",
       "category": "category for Sofa 18",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "19",
       "image": "https://i.pinimg.com/236x/b3/7b/f1/b37bf115f7be92211df83a034c49f9ac.jpg",
       "title": "Sofa 19",
       "category": "category for Sofa 19",
-      "price": "89.99",
-      "colors": ["#343A14", "#FF4555"]
+      "price": 89.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#343A14"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#FF4555"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     },
     {
       "id": "20",
       "image": "https://i.pinimg.com/236x/74/a2/b8/74a2b84b8ce8c7e99915000614c88cdd.jpg",
       "title": "Sofa 20",
       "category": "category for Sofa 20",
-      "price": "99.99",
-      "colors": ["#605C3C", "#88C45D"]
+      "price": 99.99,
+      "colors": [
+        {
+          "id": 1,
+          "name": "",
+          "hex": "#605C3C"
+        },
+        {
+          "id": 2,
+          "name": "",
+          "hex": "#88C45D"
+        }
+      ],
+      "description": "The inspiration for the design if this chair comes from the industrial style of the first half of the last century, which is complemented by the most modern features.",
+      "stock": 50
     }
   ]
 }
