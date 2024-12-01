@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useMemo, useCallback} from 'react';
 import {
   View,
   Text,
@@ -6,15 +6,15 @@ import {
   FlatList,
   Dimensions,
   Pressable,
+  StyleSheet,
+  Button,
   Alert,
-  TouchableOpacity,
 } from 'react-native';
 import AppStyle from '../theme/styles';
-import {getProductDetails} from '../api/productService';
+import {favoriteProduct, getProductDetails} from '../api/productService';
 import {useNavigation} from '@react-navigation/native';
 import {alterCart} from '../api/cartService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import CustomBottomSheet from '../components/BottomSheet/BottomSheet';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -33,12 +33,21 @@ const ProductDetail = ({route}) => {
     setIsVisible(!isVisible);
   };
 
-  useEffect(() => {
-    const fetchProductDetails = async () => {
-      const data = await getProductDetails(productId);
-      setProduct(data);
-    };
+  const fetchProductDetails = async () => {
+    const userId = await AsyncStorage.getItem('userId');
+    const data = await getProductDetails(productId, userId);
+    setProduct(data);
+  };
 
+  useEffect(() => {
+    const getUserId = async () => {
+      const userId = await AsyncStorage.getItem('userId');
+      setUserId(userId);
+    };
+    getUserId();
+  }, []);
+
+  useEffect(() => {
     fetchProductDetails();
   }, [productId]);
 
@@ -63,29 +72,23 @@ const ProductDetail = ({route}) => {
     ? product.price.toLocaleString('vi-VN')
     : '0';
 
-  useEffect(() => {
-    const getUserId = async () => {
-      const userId = await AsyncStorage.getItem('userId');
-      setUserId(userId);
-    };
-    getUserId();
-  }, []);
+  const handleFavoriteProduct = async () => {
+    const userId = await AsyncStorage.getItem('userId');
+    const res = await favoriteProduct(productId, +userId);
+    if (res.result.code === 200) {
+      await fetchProductDetails();
+    }
+  };
 
-  // const handleBuyNow = async productVariantId => {
-  //   console.log('Buy Now:', productVariantId);
-  //   await handleAlterCart(productVariantId);
-  //   navigation.navigate('cart');
-  // };
-
-  // const handleAddToCart = async productVariantId => {
-  //   console.log('Add to Cart:', productVariantId);
-  //   await handleAlterCart(productVariantId);
-  // };
-
-  const handleAlterCart = () => {
-    // const res = await alterCart(userId, {productVariantId, add: true});
-    // Alert.alert(res.result.message);
-    toggleBottomSheet();
+  const addToCart = async () => {
+    console.log('addToCart');
+    const userId = await AsyncStorage.getItem('userId');
+    const productVariantId = product?.variants[0].id;
+    const res = await alterCart(userId, {productVariantId, add: true});
+    console.log(res);
+    if (res.result.code === 200) {
+      Alert.alert(res.result.message);
+    }
   };
 
   return (
@@ -138,9 +141,6 @@ const ProductDetail = ({route}) => {
         <Pressable onPress={() => navigation.goBack()}>
           <Image source={require('../assets/icons/icon-back.png')} />
         </Pressable>
-        <Pressable>
-          <Image source={require('../assets/icons/icon-favourite.png')} />
-        </Pressable>
       </View>
       <View style={AppStyle.StyleProductDetails.productInfo}>
         <View style={AppStyle.StyleProductDetails.innerProductInfo}>
@@ -177,17 +177,36 @@ const ProductDetail = ({route}) => {
         </View>
       </View>
       <View style={AppStyle.StyleProductDetails.footer}>
+        <Pressable onPress={handleFavoriteProduct}>
+          {product?.favorite ? (
+            <Image source={require('../assets/icons/remove-favorite.png')} />
+          ) : (
+            <Image source={require('../assets/icons/icon-favourite.png')} />
+          )}
+        </Pressable>
         <Pressable
           style={AppStyle.StyleProductDetails.addToCart}
-          onPress={() => handleAlterCart()}>
+          onPress={() => addToCart()}>
           <Text style={AppStyle.StyleProductDetails.commonCart}>
             Add To Cart
           </Text>
         </Pressable>
-        {/* <CustomBottomSheet isVisible={isVisible} onClose={toggleBottomSheet} /> */}
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: 'grey',
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+});
 
 export default ProductDetail;

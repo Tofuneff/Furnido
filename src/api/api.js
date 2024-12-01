@@ -15,6 +15,7 @@ const apiClient = axios.create({
 
 // Hàm GET chung
 export const get = async (url, params = {}) => {
+  console.log('get', url, params);
   try {
     const response = await apiClient.get(url, {params});
     return response.data.data;
@@ -24,9 +25,12 @@ export const get = async (url, params = {}) => {
 };
 
 // Hàm POST chung
-export const post = async (url, data = {}) => {
+export const post = async (url, data = {}, params) => {
+  console.log('url', url);
+  console.log('data', data);
+  console.log('params', params);
   try {
-    const response = await apiClient.post(url, data);
+    const response = await apiClient.post(url, data, {params});
     return response.data;
   } catch (error) {
     handleError(error);
@@ -44,9 +48,9 @@ export const put = async (url, data = {}) => {
 };
 
 // Hàm DELETE chung
-export const del = async url => {
+export const del = async (url, params) => {
   try {
-    const response = await apiClient.delete(url);
+    const response = await apiClient.delete(url, {params});
     return response.data;
   } catch (error) {
     handleError(error);
@@ -56,6 +60,6 @@ export const del = async url => {
 // Hàm xử lý lỗi
 const handleError = error => {
   console.log(error.response?.data?.result);
-  alert(error.response?.data?.result?.message);
+  alert(error.response?.result?.message);
   throw error.response?.data?.result?.message;
 };

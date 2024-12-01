@@ -5,9 +5,11 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ProductDetail from '../screens/ProductDetail';
 import CartScreen from '../screens/CartScreen';
+import FavoriteScreen from '../screens/FavoriteScreen';
+import CheckoutScreen from '../screens/CheckoutScreen';
 
 const RootStack = createNativeStackNavigator({
-  initialRouteName: 'login',
+  initialRouteName: 'bottomTab',
   screenOptions: {
     headerShown: false,
   },
@@ -18,6 +20,8 @@ const RootStack = createNativeStackNavigator({
     bottomTab: BottomTabs,
     productDetail: ProductDetail,
     cart: CartScreen,
+    favoriteProducts: FavoriteScreen,
+    checkout: CheckoutScreen,
   },
 });
 

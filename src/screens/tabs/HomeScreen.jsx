@@ -35,6 +35,11 @@ const HomeScreen = () => {
     setProducts(data);
   };
 
+  const goFavoriteProducts = () => {
+    console.log('goFavoriteProducts');
+    navigation.navigate('favoriteProducts');
+  };
+
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -61,7 +66,7 @@ const HomeScreen = () => {
           </Pressable>
           <Pressable
             style={AppStyle.StyleHome.favourite}
-            onPress={() => console.log('clicked')}>
+            onPress={goFavoriteProducts}>
             <Image source={require('../../assets/icons/icon-favourite.png')} />
           </Pressable>
         </View>
