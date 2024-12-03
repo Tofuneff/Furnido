@@ -5,9 +5,6 @@ const StyleHome = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  wrapBanner: {
-    marginBottom: 10,
-  },
   wrapHeader: {
     marginHorizontal: 20,
     marginTop: 50,

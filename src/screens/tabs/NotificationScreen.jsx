@@ -10,7 +10,7 @@ const NotificationScreen = () => {
   return (
     <View style={AppStyle.StyleNotification.container}>
       <Heading>
-        <Text style={AppStyle.StyleNotification.textLabel}>Notification</Text>
+        <Text style={AppStyle.StyleNotification.textLabel}>Thông báo</Text>
       </Heading>
       <Text style={AppStyle.StyleNotification.textNotification}>
         Hiện chưa có thông báo nào cho bạn

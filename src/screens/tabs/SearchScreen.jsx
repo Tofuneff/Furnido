@@ -6,15 +6,14 @@ import AppStyle from '../../theme/styles';
 
 const SearchScreen = () => {
   const navigation = useNavigation();
-
   return (
     <View style={AppStyle.StyleSearch.container}>
       <Heading>
-        <Text style={AppStyle.StyleCommon.textLabel}>Search</Text>
+        <Text style={AppStyle.StyleCommon.textLabel}>Tìm kiếm</Text>
       </Heading>
       <View>
         <TextInput
-          placeholder="Search..."
+          placeholder="Tìm kiếm..."
           style={{
             borderWidth: 1,
             marginHorizontal: 10,
@@ -43,7 +42,7 @@ const SearchScreen = () => {
             <View style={{flexDirection: 'row', gap: 10}}>
               <Image source={require('../../assets/icons/clock.png')} />
               <Text style={{fontSize: 14, fontFamily: 'Poppins-Regular'}}>
-                Brook Chair
+                Bàn Cafe Gỗ
               </Text>
             </View>
             <View>
@@ -61,7 +60,7 @@ const SearchScreen = () => {
             <View style={{flexDirection: 'row', gap: 10}}>
               <Image source={require('../../assets/icons/clock.png')} />
               <Text style={{fontSize: 14, fontFamily: 'Poppins-Regular'}}>
-                Lounge Chair
+                Ghế Sofa Hobro Dài
               </Text>
             </View>
             <View>

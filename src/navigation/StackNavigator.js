@@ -9,7 +9,7 @@ import FavoriteScreen from '../screens/FavoriteScreen';
 import CheckoutScreen from '../screens/CheckoutScreen';
 
 const RootStack = createNativeStackNavigator({
-  initialRouteName: 'bottomTab',
+  initialRouteName: 'login',
   screenOptions: {
     headerShown: false,
   },

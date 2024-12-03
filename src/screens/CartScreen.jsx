@@ -56,7 +56,9 @@ const CartScreen = () => {
     const res = await clearCart(userId);
     console.log(res);
     if (res.result.code === 200) {
-      await handleGetCart();
+      setItems([]);
+      setTotalItem(0);
+      setTotalAmount(0);
     }
   };
 
@@ -96,10 +98,9 @@ const CartScreen = () => {
           <Image source={require('../assets/icons/icon-back.png')} />
         </Pressable>
         <Text style={styles.title}>Carts ({totalItem})</Text>
-        {/* <Pressable onPress={() => handleClearCart()}>
+        <TouchableOpacity onPress={handleClearCart}>
           <Text style={styles.clearCart}>Clear</Text>
-        </Pressable> */}
-        <Text></Text>
+        </TouchableOpacity>
       </View>
       {items.length > 0 ? (
         <View style={styles.container}>
@@ -142,7 +143,12 @@ const CartScreen = () => {
           </Pressable>
         </View>
       ) : (
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+        <Text
+          style={{
+            fontSize: 20,
+            textAlign: 'center',
+            fontFamily: 'Poppins-Medium',
+          }}>
           Chưa có sản phẩm nào.
         </Text>
       )}

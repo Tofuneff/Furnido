@@ -7,7 +7,6 @@ import {Dimensions, Image} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
-// Import các hình ảnh icon từ thư mục images
 const icons = {
   Home: {
     unfocused: require('../assets/icons/home-unfocus.png'),
@@ -34,16 +33,14 @@ const BottomTabs = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarIcon: ({focused}) => {
-          // Chọn icon dựa trên trạng thái focused
           const iconSource = focused
             ? icons[route.name].focused
             : icons[route.name].unfocused;
           return <Image source={iconSource} resizeMode="contain" />;
         },
-        // Điều chỉnh chiều cao của bottom tab
         tabBarStyle: {
-          height: 75, // Đặt chiều cao theo ý muốn
-          paddingTop: 6, // Căn chỉnh icon bên trong tab bar
+          height: 75,
+          paddingTop: 6,
           backgroundColor: '#FFFFFF',
         },
         tabBarActiveTintColor: '#000000',
@@ -53,11 +50,28 @@ const BottomTabs = () => {
           paddingTop: 4,
         },
         tabBarPosition: Dimensions.width > 600 ? 'left' : 'bottom',
+        tabBarLabel: route.name,
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Notification" component={NotificationScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{tabBarLabel: 'Trang chủ'}}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{tabBarLabel: 'Tìm kiếm'}}
+      />
+      <Tab.Screen
+        name="Notification"
+        component={NotificationScreen}
+        options={{tabBarLabel: 'Thông báo'}}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{tabBarLabel: 'Thông tin'}}
+      />
     </Tab.Navigator>
   );
 };

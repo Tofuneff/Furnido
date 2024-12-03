@@ -26,13 +26,14 @@ const LoginScreen = () => {
   const [isToggleChecked, setToggleChecked] = useState(false);
   const [isChecked, setChecked] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [username, setUsername] = useState(false);
-  const [password, setPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const toggleCheck = () => setToggleChecked(preved => !preved);
   const rememberCheck = () => setChecked(preved => !preved);
 
   const signin = async () => {
+    checkValidate();
     setLoading(true);
     const res = await login({username, password});
     if (res.result.code === 200) {
@@ -49,6 +50,17 @@ const LoginScreen = () => {
     setPassword('');
   };
 
+  const checkValidate = () => {
+    if (!username || !password) {
+      Alert.alert('', 'Không được để trống tên người dùng và mật khẩu');
+      return false;
+    }
+    if (password.length < 6) {
+      Alert.alert('', 'Mật khẩu không được nhỏ hơn 6 kí tự');
+      return false;
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       style={AppStyle.StyleLogin.container}
@@ -59,7 +71,7 @@ const LoginScreen = () => {
           {loading && (
             <FastImage
               source={{
-                uri: 'https://i.pinimg.com/originals/46/9f/d4/469fd4135baf412f55e28a1b207d876f.gif',
+                uri: 'https://i.pinimg.com/originals/d7/1e/c3/d71ec3b3901cb6e71b14a2764521d559.gif',
               }} // URL hoặc file GIF trong assets
               style={{
                 width: 100,
@@ -84,9 +96,11 @@ const LoginScreen = () => {
             <View style={AppStyle.StyleLogin.mainWrapper}>
               <View style={AppStyle.StyleLogin.wrapTitle}>
                 <Text style={AppStyle.StyleLogin.textHeaderTitle}>
-                  Welcome back
+                  Chào mừng bạn
                 </Text>
-                <Text style={AppStyle.StyleLogin.textTitle}>Login Account</Text>
+                <Text style={AppStyle.StyleLogin.textTitle}>
+                  Đăng nhập tài khoản
+                </Text>
               </View>
               {/* Input */}
               <View style={AppStyle.StyleLogin.wrapInput}>
@@ -94,18 +108,20 @@ const LoginScreen = () => {
                   keyboardType="email-address"
                   placeholderTextColor={'rgba(139, 139, 139, 1)'}
                   style={AppStyle.StyleLogin.input}
-                  placeholder="Enter your username"
+                  placeholder="Nhập tên người dùng"
                   value={username}
-                  onChangeText={setUsername}
+                  onChangeText={text => setUsername(text)}
+                  onBlur={checkValidate}
                 />
                 <View>
                   <TextInput
                     secureTextEntry={!isToggleChecked}
                     placeholderTextColor={'rgba(139, 139, 139, 1)'}
                     style={AppStyle.StyleLogin.input}
-                    placeholder="Enter your password"
+                    placeholder="Nhập mật khẩu"
                     value={password}
                     onChangeText={setPassword}
+                    onBlur={checkValidate}
                   />
                   <Pressable
                     style={AppStyle.StyleLogin.togglePassword}
@@ -141,7 +157,7 @@ const LoginScreen = () => {
                   </Pressable>
                   {!isChecked ? (
                     <Text style={AppStyle.StyleLogin.textRememberAccount}>
-                      Remember account
+                      Nhớ tài khoản
                     </Text>
                   ) : (
                     <Text
@@ -149,19 +165,19 @@ const LoginScreen = () => {
                         AppStyle.StyleLogin.textRememberAccount,
                         {color: '#402700'},
                       ]}>
-                      Remember account
+                      Nhớ tài khoản
                     </Text>
                   )}
                 </View>
                 <Pressable>
                   <Text style={AppStyle.StyleLogin.textForgotPassword}>
-                    Forgot password ?
+                    Quên mật khẩu ?
                   </Text>
                 </Pressable>
               </View>
               {/* Button */}
               <View>
-                <GradientButton title="Login" onPress={signin} />
+                <GradientButton title="Đăng nhập" onPress={signin} />
               </View>
               {/* Or */}
               <View style={AppStyle.StyleLogin.wrapOr}>
@@ -171,7 +187,7 @@ const LoginScreen = () => {
                   borderBottomColor={'#402700'}
                   marginVertical={11}
                 />
-                <Text style={AppStyle.StyleLogin.textCommon}>Or</Text>
+                <Text style={AppStyle.StyleLogin.textCommon}>Hoặc</Text>
                 <HorizontalLine
                   width={145}
                   borderBottomWidth={1}
@@ -191,11 +207,11 @@ const LoginScreen = () => {
               {/* Footer */}
               <View style={AppStyle.StyleLogin.wrapFooter}>
                 <Text style={AppStyle.StyleLogin.textCommon}>
-                  You don't have an account?
+                  Bạn không có tài khoản?
                 </Text>
                 <Pressable onPress={() => navigation.navigate('register')}>
                   <Text style={AppStyle.StyleLogin.textCreateAccount}>
-                    Create an account
+                    Tạo tài khoản
                   </Text>
                 </Pressable>
               </View>

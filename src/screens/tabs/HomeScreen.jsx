@@ -14,14 +14,17 @@ import CategorySelector from '../../components/CategorySelector';
 import {getProductsByCategory} from '../../api/productService';
 import {getCategories} from '../../api/categoryService';
 import {useNavigation} from '@react-navigation/native';
+import FastImage from 'react-native-fast-image';
 
 const HomeScreen = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
   const fetchCategories = async () => {
+    setLoading(true);
     const data = await getCategories();
     setCategories(data);
 
@@ -31,6 +34,7 @@ const HomeScreen = () => {
   };
 
   const fetchProductsByCategory = async categoryId => {
+    setLoading(true);
     const data = await getProductsByCategory(categoryId);
     setProducts(data);
   };
@@ -74,24 +78,31 @@ const HomeScreen = () => {
       {/* Product */}
       <SafeAreaView style={{flex: 1}}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={AppStyle.StyleHome.wrapBanner}>
-            {/* Banner */}
-            <BannerSlider />
-          </View>
+          {/* Banner */}
+          <BannerSlider />
           <CategorySelector
             categories={categories}
             selectedCategoryId={selectedCategoryId}
             onCategoryChange={setSelectedCategoryId}
           />
           {!products.length ? (
-            <Text
-              style={{
-                textAlign: 'center',
-                paddingTop: '40%',
-                fontFamily: 'Poppins-Medium',
-              }}>
-              Product is coming soon...
-            </Text>
+            loading && (
+              <FastImage
+                source={{
+                  uri: 'https://i.pinimg.com/originals/ba/9a/b4/ba9ab42593e487b4e349973e1d43b11d.gif',
+                }} // URL hoặc file GIF trong assets
+                style={{
+                  width: 100,
+                  height: 100,
+                  position: 'absolute',
+                  bottom: 150,
+                  top: 400,
+                  left: 150,
+                  right: 50,
+                }}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            )
           ) : (
             <ProductBlock products={products} />
           )}

@@ -31,6 +31,7 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState('');
 
   const signup = async () => {
+    checkValidate();
     const user = {
       name,
       email,
@@ -46,15 +47,41 @@ const RegisterScreen = () => {
     }
   };
 
-  const goSignIn = () => {
-    navigation.navigate('login');
-  };
+  const goSignIn = () => navigation.navigate('login');
 
   const resetUser = () => {
     setName('');
     setEmail('');
     setPhone('');
     setPassword('');
+  };
+
+  const checkValidate = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!name) {
+      Alert.alert('', 'Không được để trống thông tin');
+      return false;
+    }
+    if (!email) {
+      Alert.alert('', 'Không được để trống thông tin');
+      return false;
+    }
+    if (!phone) {
+      Alert.alert('', 'Không được để trống thông tin');
+      return false;
+    }
+    if (!password) {
+      Alert.alert('', 'Không được để trống thông tin');
+      return false;
+    }
+    if (!emailRegex.test(email)) {
+      Alert.alert('', 'Không đúng định dạng email');
+      return false;
+    }
+    if (password.length < 6) {
+      Alert.alert('', 'Mật khẩu không được nhỏ hơn 6 kí tự');
+      return false;
+    }
   };
 
   return (
@@ -93,10 +120,10 @@ const RegisterScreen = () => {
             <View style={AppStyle.StyleRegister.mainWrapper}>
               <View style={AppStyle.StyleRegister.wrapTitle}>
                 <Text style={AppStyle.StyleRegister.textHeaderTitle}>
-                  Register
+                  Đăng ký
                 </Text>
                 <Text style={AppStyle.StyleRegister.textTitle}>
-                  Create an account
+                  Tạo tài khoản
                 </Text>
               </View>
               {/* Input */}
@@ -105,7 +132,7 @@ const RegisterScreen = () => {
                   keyboardType="default"
                   placeholderTextColor={'rgba(139, 139, 139, 1)'}
                   style={AppStyle.StyleRegister.input}
-                  placeholder="Full name"
+                  placeholder="Họ tên"
                   value={name}
                   onChangeText={setName}
                 />
@@ -121,7 +148,7 @@ const RegisterScreen = () => {
                   keyboardType="numeric"
                   placeholderTextColor={'rgba(139, 139, 139, 1)'}
                   style={AppStyle.StyleRegister.input}
-                  placeholder="Phone number"
+                  placeholder="Số điện thoại"
                   value={phone}
                   onChangeText={setPhone}
                 />
@@ -130,7 +157,7 @@ const RegisterScreen = () => {
                     secureTextEntry={!isToggleChecked}
                     placeholderTextColor={'rgba(139, 139, 139, 1)'}
                     style={AppStyle.StyleRegister.input}
-                    placeholder="Password"
+                    placeholder="Mật khẩu"
                     value={password}
                     onChangeText={setPassword}
                   />
@@ -154,25 +181,25 @@ const RegisterScreen = () => {
               {/* Terms & Conditions and Privacy Policy */}
               <View style={AppStyle.StyleRegister.wrapTermsAndConditions}>
                 <Text style={AppStyle.StyleRegister.textCommon}>
-                  To register an account, you agree
+                  Để đăng ký tài khoản, bạn đồng ý
                 </Text>
                 <View style={{flexDirection: 'row', justifyContent: 'center'}}>
                   <Pressable>
                     <Text style={AppStyle.StyleRegister.textTermsAndConditions}>
-                      Terms & Conditions
+                      Điều khoản & Điều kiện
                     </Text>
                   </Pressable>
-                  <Text style={AppStyle.StyleRegister.textCommon}> and </Text>
+                  <Text style={AppStyle.StyleRegister.textCommon}> và </Text>
                   <Pressable>
                     <Text style={AppStyle.StyleRegister.textTermsAndConditions}>
-                      Privacy Policy
+                      Chính sách bảo mật
                     </Text>
                   </Pressable>
                 </View>
               </View>
               {/* Button */}
               <View>
-                <GradientButton title="Register" onPress={signup} />
+                <GradientButton title="Đăng ký" onPress={signup} />
               </View>
               {/* Or */}
               <View style={AppStyle.StyleRegister.wrapOr}>
@@ -182,7 +209,7 @@ const RegisterScreen = () => {
                   borderBottomColor={'#402700'}
                   marginVertical={11}
                 />
-                <Text style={AppStyle.StyleRegister.textCommon}>Or</Text>
+                <Text style={AppStyle.StyleRegister.textCommon}>Hoặc</Text>
                 <HorizontalLine
                   width={145}
                   borderBottomWidth={1}
@@ -202,11 +229,11 @@ const RegisterScreen = () => {
               {/* Footer */}
               <View style={AppStyle.StyleRegister.wrapFooter}>
                 <Text style={AppStyle.StyleRegister.textCommon}>
-                  You already have an account?
+                  Bạn đã có tài khoản?
                 </Text>
-                <Pressable onPress={() => navigation.navigate('Login')}>
+                <Pressable onPress={() => navigation.navigate('login')}>
                   <Text style={AppStyle.StyleRegister.textCreateAccount}>
-                    Sign in
+                    Đăng nhập
                   </Text>
                 </Pressable>
               </View>
