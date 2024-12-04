@@ -7,6 +7,7 @@ import ProductDetail from '../screens/ProductDetail';
 import CartScreen from '../screens/CartScreen';
 import FavoriteScreen from '../screens/FavoriteScreen';
 import CheckoutScreen from '../screens/CheckoutScreen';
+import ChangePasswordScreen from '../screens/ChangePasswordScreen';
 
 const RootStack = createNativeStackNavigator({
   initialRouteName: 'login',
@@ -22,6 +23,7 @@ const RootStack = createNativeStackNavigator({
     cart: CartScreen,
     favoriteProducts: FavoriteScreen,
     checkout: CheckoutScreen,
+    changePassword: ChangePasswordScreen,
   },
 });
 

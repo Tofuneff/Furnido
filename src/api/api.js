@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Alert} from 'react-native';
 
 const backendURL = '10.0.2.2';
 const port = '8080';
@@ -59,6 +60,6 @@ export const del = async (url, params) => {
 // Hàm xử lý lỗi
 const handleError = error => {
   console.log(error.response?.data?.result);
-  alert(error.response?.result?.message);
+  Alert.alert(error?.message || error.response?.result?.message);
   throw error.response?.data?.result?.message;
 };

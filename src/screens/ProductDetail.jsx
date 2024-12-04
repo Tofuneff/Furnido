@@ -15,6 +15,7 @@ import {favoriteProduct, getProductDetails} from '../api/productService';
 import {useNavigation} from '@react-navigation/native';
 import {alterCart} from '../api/cartService';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Product from '../components/Product/Product';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -25,18 +26,41 @@ const ProductDetail = ({route}) => {
   const flatListRef = useRef(null);
   const flatListThumbnailRef = useRef(null);
   const [userId, setUserId] = useState('');
+  const [viewedProductList, setViewedProductList] = useState([]);
 
   const {productId} = route.params;
   const [isVisible, setIsVisible] = useState(false);
-
-  const toggleBottomSheet = () => {
-    setIsVisible(!isVisible);
-  };
 
   const fetchProductDetails = async () => {
     const userId = await AsyncStorage.getItem('userId');
     const data = await getProductDetails(productId, userId);
     setProduct(data);
+    addToViewedProducts(data);
+  };
+
+  const addToViewedProducts = async product => {
+    console.log('addToViewedProducts');
+    const viewedProductsJson = await AsyncStorage.getItem('viewedProducts');
+    if (viewedProductsJson == null) {
+      const viewedProducts = new Array(...product);
+      await AsyncStorage.setItem(
+        'viewedProducts',
+        JSON.stringify(viewedProducts),
+      );
+    }
+    const viewedProducts = JSON.parse(viewedProductsJson);
+    console.log('viewedProducts', viewedProducts);
+    const viewedProductIds = new Set(viewedProducts.map(product => product.id));
+    console.log('viewedProductIds', viewedProductIds);
+    if (!viewedProductIds.has(product.id)) {
+      viewedProducts.push(product);
+      setViewedProductList(viewedProducts.filter(p => p.id !== product.id));
+      await AsyncStorage.setItem(
+        'viewedProducts',
+        JSON.stringify(viewedProducts),
+      );
+    }
+    console.log('viewedProductList', viewedProductList);
   };
 
   useEffect(() => {
@@ -176,6 +200,11 @@ const ProductDetail = ({route}) => {
           </View>
         </View>
       </View>
+      <FlatList
+        data={viewedProductList}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => <Product product={item} />}
+      />
       <View style={AppStyle.StyleProductDetails.footer}>
         <Pressable onPress={handleFavoriteProduct}>
           {product?.favorite ? (

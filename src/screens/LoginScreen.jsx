@@ -33,14 +33,20 @@ const LoginScreen = () => {
   const rememberCheck = () => setChecked(preved => !preved);
 
   const signin = async () => {
-    checkValidate();
+    // checkValidate();
     setLoading(true);
     const res = await login({username, password});
     if (res.result.code === 200) {
-      await AsyncStorage.setItem('userId', res.data.id.toString());
+      setUser(res.data);
       directToHome();
       resetInput();
+      setLoading(false);
     }
+  };
+
+  const setUser = async user => {
+    await AsyncStorage.setItem('user', JSON.stringify(user));
+    await AsyncStorage.setItem('userId', user.id.toString());
   };
 
   const directToHome = () => navigation.navigate('bottomTab');
@@ -72,7 +78,7 @@ const LoginScreen = () => {
             <FastImage
               source={{
                 uri: 'https://i.pinimg.com/originals/d7/1e/c3/d71ec3b3901cb6e71b14a2764521d559.gif',
-              }} // URL hoặc file GIF trong assets
+              }}
               style={{
                 width: 100,
                 height: 100,
@@ -111,7 +117,7 @@ const LoginScreen = () => {
                   placeholder="Nhập tên người dùng"
                   value={username}
                   onChangeText={text => setUsername(text)}
-                  onBlur={checkValidate}
+                  // onBlur={checkValidate}
                 />
                 <View>
                   <TextInput
@@ -121,7 +127,7 @@ const LoginScreen = () => {
                     placeholder="Nhập mật khẩu"
                     value={password}
                     onChangeText={setPassword}
-                    onBlur={checkValidate}
+                    // onBlur={checkValidate}
                   />
                   <Pressable
                     style={AppStyle.StyleLogin.togglePassword}

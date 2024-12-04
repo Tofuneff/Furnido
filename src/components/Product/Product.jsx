@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 
-export default FavoriteProduct = ({product, onRemoveFavorite}) => {
+export default FavoriteProduct = ({product}) => {
   const navigation = useNavigation();
   const goProductDetails = productId => {
     navigation.navigate('productDetail', {productId});
