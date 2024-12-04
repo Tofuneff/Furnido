@@ -51,7 +51,9 @@ const ProfileScreen = () => {
     {
       label: 'Lịch sử giao dịch',
       type: 'navigation',
-      onPress: () => {},
+      onPress: () => {
+        navigation.navigate('transactionHistory');
+      },
     },
     {
       label: 'Q & A',
